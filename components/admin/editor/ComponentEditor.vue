@@ -70,7 +70,7 @@ export default {
             padding: 30px;
         }
 
-        [class^="editable"]{}
+        // [class^="editable"]{}
 
         .mce-content-body {
             outline: none !important;
