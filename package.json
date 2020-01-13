@@ -1,5 +1,5 @@
 {
-  "name": "componentbuilder",
+  "name": "manablox-componentbuilder",
   "description": "component builder with vue",
   "version": "1.0.0",
   "main": "index.js",
