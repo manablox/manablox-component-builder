@@ -1,7 +1,7 @@
 <template>
-    <div class="content component">
-        <h2 ref="content.headline.value" class="text-4xl" v-html="content.headline.value"></h2>
-        <div ref="content.content.value" v-html="content.content.value"></div>
+    <div class="contentblock component">
+        <component :is="`h${ settings.headline.value }`" ref="content.headline.value" class="text-headline-primary text-4xl" v-html="content.headline.value"></component>
+        <div ref="content.content.value" class="text-primary" v-html="content.content.value"></div>
     </div>
 </template>
 

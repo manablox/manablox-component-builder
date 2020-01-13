@@ -1,15 +1,31 @@
 import 'dotenv/config'
 
 export default {
+    server: {
+        port: process.env.SERVER_PORT,
+        host: process.env.SERVER_HOST
+    },
 
     buildModules: [
         '@nuxtjs/tailwindcss'
+    ],
+
+    modules: [
+        '@nuxtjs/axios'
     ],
 
     plugins: [
         '~/plugins/componentloader',
         '~/plugins/editorconfig',
         { src: '~/plugins/tinymce', ssr: false }
+    ],
+
+    tailwindcss: {
+        cssPath: '~/assets/css/tailwind.css'
+    },
+
+    css: [
+        '~/assets/css/ui'
     ],
 
     build: {
