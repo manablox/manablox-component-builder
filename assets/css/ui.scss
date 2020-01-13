@@ -1,3 +1,38 @@
+:root {
+    --fontsize-xs: .75rem;
+    --fontsize-sm: .875rem;
+    --fontsize-tiny: .875rem;
+    --fontsize-base: 1rem;
+    --fontsize-lg: 1.125rem;
+    --fontsize-xl: 1.25rem;
+    --fontsize-2xl: 1.5rem;
+    --fontsize-3xl: 1.875rem;
+    --fontsize-4xl: 2.25rem;
+    --fontsize-5xl: 3rem;
+    --fontsize-6xl: 4rem;
+    --fontsize-7xl: 5rem;
+}
+
 .btn {
-    @apply font-bold py-2 px-4 rounded bg-blue-500 mx-1 text-white;
+    @apply font-bold py-1 px-3 bg-blue-500 mx-1 text-white;
+}
+
+h1 {
+    @apply text-4xl;
+}
+
+h2 {
+    @apply text-3xl;
+}
+
+h3 {
+    @apply text-2xl;
+}
+
+h4 {
+    @apply text-xl;
+}
+
+h5 {
+    @apply text-lg;
 }

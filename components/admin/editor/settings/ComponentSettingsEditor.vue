@@ -1,20 +1,20 @@
 <template>
     <div :class="`componentsettings ${ hover ? 'componentsettings--hover' : '' }`">
         
-        <div class="componentsettings__component">
-            <button class="mr-2 px-2" @click="SetMode('edit')">settings</button>
-            <span>{{ pagecomponent.type.toUpperCase() }}</span>
+        <div class="componentsettings__actions">
+            <button class="mr-2 px-2 bg-gray-700" @click="SetMode('edit')">settings</button>
+            <span class="pr-2">{{ pagecomponent.type.toUpperCase() }}</span>
         </div>
 
 
         <div class="componentsettings__editor" v-if="mode == 'edit'">
             <div class="text-right">
-                <button class="btn" @click="mode = ''">Close</button>
+                <button class="btn" @click="mode = ''">X</button>
             </div>
             
 
             <div class="componentsettings__editor__field" v-for="(setting, settingKey, settingId) in pagecomponent.settings" :key="`setting-${ settingKey }-${ settingId }-${ pagecomponent._id }`">
-                <component :is="setting.type" :setting="setting" :pagecomponent="pagecomponent" />
+                <component :is="setting.type" :setting="setting" :pagecomponent="pagecomponent" @input="OnSettingChange(setting)" />
             </div>
             
         </div>
@@ -37,6 +37,10 @@ export default {
     methods: {
         SetMode(mode){
             this.mode = mode
+        },
+
+        OnSettingChange(setting){
+            this.$emit('input', setting)
         }
     }
 
@@ -70,19 +74,18 @@ $hovercolor: #0063aa;
         box-shadow: 0 0 30px rgba(black, 0.15);
 
         .componentsettings {
-            &__component {
+            &__actions {
                 display: block;
             }
         }
     }
 
-    &__component {
+    &__actions {
         display: none;
         position: absolute;
-        top: -20px;
-        height: 20px;
+        top: -16px;
+        height: 16px;
         right: 0;
-        padding: 3px 2px;
         background-color: $hovercolor;
         font-size: 10px;
         color: white;

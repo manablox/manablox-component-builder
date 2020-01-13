@@ -13,6 +13,15 @@ export default {
         setting: { type: Object }
     },
 
+    watch: {
+        setting: {
+            deep: true,
+            handler: function(value){
+                this.$emit('input', value)
+            }
+        }
+    },
+
     data(){
         return {
             headlines: [1, 2, 3, 4, 5]

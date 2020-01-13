@@ -1,3 +1,16 @@
 .theme-vivo {
     --color-text-primary: red;
+
+    --fontsize-xs: .75rem;
+    --fontsize-sm: .875rem;
+    --fontsize-tiny: .875rem;
+    --fontsize-base: 1rem;
+    --fontsize-lg: 1.5rem;
+    --fontsize-xl: 2rem;
+    --fontsize-2xl: 3rem;
+    --fontsize-3xl: 4rem;
+    --fontsize-4xl: 5rem;
+    --fontsize-5xl: 6rem;
+    --fontsize-6xl: 7rem;
+    --fontsize-7xl: 8rem;
 }

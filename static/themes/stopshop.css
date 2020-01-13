@@ -1,4 +1,17 @@
 .theme-stopshop {
     --color-text-primary: green;
     --color-headline-primary: red;
+
+    --fontsize-xs: .75rem;
+    --fontsize-sm: .875rem;
+    --fontsize-tiny: .875rem;
+    --fontsize-base: 1rem;
+    --fontsize-lg: 1.125rem;
+    --fontsize-xl: 1.25rem;
+    --fontsize-2xl: 1.5rem;
+    --fontsize-3xl: 1.875rem;
+    --fontsize-4xl: 2.25rem;
+    --fontsize-5xl: 3rem;
+    --fontsize-6xl: 4rem;
+    --fontsize-7xl: 5rem;
 }
