@@ -6,7 +6,11 @@
 */
 module.exports = {
     theme: {
+
+
+
         extend: {
+            
             fontSize: {
                 'xs': 'var(--fontsize-xs)',
                 'sm': 'var(--fontsize-sm)',

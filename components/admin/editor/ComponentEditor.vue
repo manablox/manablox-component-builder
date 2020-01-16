@@ -83,7 +83,8 @@ export default {
                     _id: new Date().getTime().toString(),
                     type: 'contentblock',
                     settings: {
-                        headline: { type: 'HeadlineSelect', value: 1 }
+                        headline: { type: 'HeadlineSelect', value: 1 },
+                        align: { type: 'Alignment', value: 'left' }
                     },
                     content: {
                         headline: { type: 'htmlsingleinline', value: 'Testheadline' },
@@ -94,7 +95,7 @@ export default {
                     _id: new Date().getTime().toString(),
                     type: 'image',
                     settings: {
-                        headline: { type: 'HeadlineSelect', value: 1 }
+                        align: { type: 'Alignment', value: 'left' }
                     },
                     content: {
                         asset: {
@@ -102,7 +103,8 @@ export default {
                             value: {
                                 url: 'https://loremflickr.com/1920/1080'
                             }
-                        }
+                        },
+                        
                     }
                 }
             }
@@ -155,32 +157,35 @@ export default {
                     let elementId = `editable-${ elementContent.type }-${ contentKey }-${ componentProps._id }`
                     element.classList.add(elementId)
                 
-                    // if the current element is of any "html" type, we initialize a wysiwyg editor
-                    if(elementContent.type.startsWith('html')){
-                        // create a unique editor id class
-                        let elementId = `editable-${ elementContent.type }-${ contentKey }-${ componentProps._id }`
-                        element.classList.add(elementId)
+                    switch(elementContent.type){
+                        // if the current element is of any "html" type, we initialize a wysiwyg editor
+                        case 'htmlsingleinline':
+                        case 'htmlinline':
+                            // create a unique editor id class
+                            let elementId = `editable-${ elementContent.type }-${ contentKey }-${ componentProps._id }`
+                            element.classList.add(elementId)
 
-                        // initialize a tinymce editor
-                        tinymce.init({
-                            ...this.$editorconfig[elementContent.type],
-                            selector: `.${ elementId }`,
-                            pagecomponent: component,
-                            setup(editor){
-                                editor.on('Change', (e) => {
-                                    // when the content changes, we need to update the pagecomponent data
-                                    elementContent.value = e.level.content
-                                })
-                            }
-                        })
-                    }
+                            // initialize a tinymce editor
+                            tinymce.init({
+                                ...this.$editorconfig[elementContent.type],
+                                selector: `.${ elementId }`,
+                                pagecomponent: component,
+                                setup(editor){
+                                    editor.on('Change', (e) => {
+                                        // when the content changes, we need to update the pagecomponent data
+                                        elementContent.value = e.level.content
+                                    })
+                                }
+                            })
+                        break; 
 
-                    // if the current element is of type "imageselect", we initialize an image selector
-                    if(elementContent.type == 'imageselect'){
-                        element.addEventListener('click', (event) => {
-                            this.imageSelectorTargetField = elementContent
-                            this.imageSelectorActive = true
-                        })
+                        // if the current element is of type "imageselect", we initialize an image selector
+                        case 'imageselect':
+                            element.addEventListener('click', (event) => {
+                                this.imageSelectorTargetField = elementContent
+                                this.imageSelectorActive = true
+                            })
+                        break;
                     }
                 }
             }
